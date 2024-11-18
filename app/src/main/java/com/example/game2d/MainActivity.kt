@@ -65,14 +65,14 @@ fun Start(m: Modifier,game:Game, screenW: Int){
         contentDescription = "背景圖",
         contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
         modifier = Modifier
-            .offset { IntOffset(-game.background.x1,0) }
+            .offset { IntOffset(game.background.x1,0) }
     )
     Image(
         painter = painterResource(id = R.drawable.forest),
         contentDescription = "背景圖2",
         contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
         modifier = Modifier
-            .offset { IntOffset(-game.background.x2, 0) }
+            .offset { IntOffset(game.background.x2, 0) }
     )
 
     Row {
@@ -90,7 +90,7 @@ fun Start(m: Modifier,game:Game, screenW: Int){
             },
             modifier = m
         ) {
-            Text(text = "開始")
+            Text(text = msg)
         }
 
         Text(text = counter.toString(), modifier = m)
