@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Start(m: Modifier){
     var counter by remember { mutableStateOf(0) }
-
+    var counter2 by remember { mutableStateOf(0) }
     Row {
         Button(
             onClick = {
@@ -65,6 +65,16 @@ fun Start(m: Modifier){
         }
 
         Text(text = counter.toString(), modifier = m)
+
+        Button(
+            onClick = {
+                counter2++
+            },
+            modifier = m
+        ) {
+            Text(text="加1")
+        }
+           Text(text=counter2.toString(), modifier = m)
     }
 
 }
