@@ -31,7 +31,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             Game2DTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Start(m=Modifier.padding(innerPadding) )
+                    val game = Game(GlobalScope)
+                    Start(m=Modifier.padding(innerPadding),game )
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
 
                 }
@@ -41,7 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Start(m: Modifier){
+fun Start(m: Modifier,game:Game){
     var counter by remember { mutableStateOf(0) }
     var counter2 by remember { mutableStateOf(0) }
     Row {
