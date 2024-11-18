@@ -60,7 +60,7 @@ fun Start(m: Modifier,game:Game){
         contentDescription = "背景圖",
         contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
         modifier = Modifier
-            .offset { IntOffset(counter,0) }
+            .offset { IntOffset(-counter,0) }
     )
 
     Row {
