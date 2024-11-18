@@ -22,6 +22,7 @@ import com.example.game2d.ui.theme.Game2DTheme
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
+import androidx.compose.runtime.collectAsState
 
 
 class MainActivity : ComponentActivity() {
@@ -43,7 +44,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Start(m: Modifier,game:Game){
-    var counter by remember { mutableStateOf(0) }
+    val counter by game.state.collectAsState()
     var counter2 by remember { mutableStateOf(0) }
     Row {
         Button(
@@ -55,7 +56,7 @@ fun Start(m: Modifier,game:Game){
             Text(text = "開始")
         }
 
-        Text(text = game.counter.toString(), modifier = m)
+        Text(text = counter.toString(), modifier = m)
 
         Button(
             onClick = {
