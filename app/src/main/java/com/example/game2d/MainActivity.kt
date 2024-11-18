@@ -23,6 +23,12 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
 import androidx.compose.runtime.collectAsState
+import androidx.compose.foundation.Image
+import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.layout.offset
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.IntOffset
+
 
 
 
@@ -48,6 +54,15 @@ class MainActivity : ComponentActivity() {
 fun Start(m: Modifier,game:Game){
     val counter by game.state.collectAsState()
     var counter2 by remember { mutableStateOf(0) }
+
+    Image(
+        painter = painterResource(id = R.drawable.forest),
+        contentDescription = "背景圖",
+        contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
+        modifier = Modifier
+            .offset { IntOffset(-counter, 0) }
+    )
+
     Row {
         Button(
             onClick = {
@@ -59,16 +74,18 @@ fun Start(m: Modifier,game:Game){
         }
 
         Text(text = counter.toString(), modifier = m)
+Row {
+    Button(
+        onClick = {
+            counter2++
+        },
+        modifier = m
+    ) {
+        Text(text="加1")
+    }
+    Text(text=counter2.toString(), modifier = m)
+    }
 
-        Button(
-            onClick = {
-                counter2++
-            },
-            modifier = m
-        ) {
-            Text(text="加1")
-        }
-           Text(text=counter2.toString(), modifier = m)
     }
 
 }
