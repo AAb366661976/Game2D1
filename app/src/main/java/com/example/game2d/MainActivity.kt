@@ -57,19 +57,25 @@ fun Start(m: Modifier,game:Game, screenW: Int){
     val counter by game.state.collectAsState()
     var counter2 by remember { mutableStateOf(0) }
 
+    var x by remember { mutableStateOf(0) }
+    x++
+    if(x>screenW){
+        x=0
+    }
+
     Image(
         painter = painterResource(id = R.drawable.forest),
         contentDescription = "背景圖",
         contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
         modifier = Modifier
-            .offset { IntOffset(-counter,0) }
+            .offset { IntOffset(-x,0) }
     )
     Image(
         painter = painterResource(id = R.drawable.forest),
         contentDescription = "背景圖2",
         contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
         modifier = Modifier
-            .offset { IntOffset(-counter+screenW, 0) }
+            .offset { IntOffset(-x+screenW, 0) }
     )
 
     Row {
