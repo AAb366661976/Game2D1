@@ -56,6 +56,7 @@ class MainActivity : ComponentActivity() {
 fun Start(m: Modifier,game:Game, screenW: Int){
     val counter by game.state.collectAsState()
     var counter2 by remember { mutableStateOf(0) }
+    var msg by remember { mutableStateOf("遊戲開始") }
 
 
 
@@ -77,7 +78,15 @@ fun Start(m: Modifier,game:Game, screenW: Int){
     Row {
         Button(
             onClick = {
-                game.Play()
+                if (msg=="遊戲開始"){
+                    msg = "遊戲暫停"
+                    game.Play()
+                }
+                else{
+                    msg = "遊戲開始"
+                    game.isPlaying = false
+                }
+
             },
             modifier = m
         ) {

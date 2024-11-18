@@ -13,7 +13,7 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int){
 
     fun Play(){
         scope.launch {
-            counter = 0
+            //counter = 0
             isPlaying = true
             while (isPlaying) {
                 delay(4)
