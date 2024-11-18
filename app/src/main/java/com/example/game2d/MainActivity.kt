@@ -48,24 +48,14 @@ fun Start(m: Modifier,game:Game){
     Row {
         Button(
             onClick = {
-                GlobalScope.launch{
-                    counter = 0
-                    while (counter<100 ){
-                        delay(1000)
-                        counter++
-                    }
-                }
-
-                if (counter<40){
-                    counter ++
-                }
+                game.Play()
             },
             modifier = m
         ) {
             Text(text = "開始")
         }
 
-        Text(text = counter.toString(), modifier = m)
+        Text(text = game.counter.toString(), modifier = m)
 
         Button(
             onClick = {
