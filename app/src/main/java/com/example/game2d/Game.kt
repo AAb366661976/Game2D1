@@ -13,7 +13,7 @@ class Game (val scope:CoroutineScope){
         scope.launch {
             counter = 0
             while (counter<2000) {
-                delay(40)
+                delay(4)
                 counter++
                 state.emit(counter)
 

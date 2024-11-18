@@ -39,8 +39,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             Game2DTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    val screenW = resources.displayMetrics.widthPixels
+                    val screenH = resources.displayMetrics.heightPixels
                     val game = Game(GlobalScope)
-                    Start(m=Modifier.padding(innerPadding),game )
+                    Start(m=Modifier.padding(innerPadding),game, screenW)
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
 
                 }
@@ -51,7 +53,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun Start(m: Modifier,game:Game){
+fun Start(m: Modifier,game:Game, screenW: Int){
     val counter by game.state.collectAsState()
     var counter2 by remember { mutableStateOf(0) }
 
@@ -67,7 +69,7 @@ fun Start(m: Modifier,game:Game){
         contentDescription = "背景圖2",
         contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
         modifier = Modifier
-            .offset { IntOffset(-counter+1920, 0) }
+            .offset { IntOffset(-counter+screenW, 0) }
     )
 
     Row {
