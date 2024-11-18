@@ -12,8 +12,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.game2d.Greeting
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.Button
 import com.example.game2d.ui.theme.Game2DTheme
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +31,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Game2DTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Start(m=Modifier.padding(innerPadding) )
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
 
                 }
@@ -35,17 +41,30 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun Start(m: Modifier){
+    var counter by remember { mutableStateOf(0) }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Game2DTheme {
-        Greeting("Android")
+    Row {
+        Button(
+            onClick = {
+                GlobalScope.launch{
+                    counter = 0
+                    while (counter<10 ){
+                        delay(1000)
+                        counter++
+                    }
+                }
+
+                if (counter<40){
+                    counter ++
+                }
+            },
+            modifier = m
+        ) {
+            Text(text = "開始")
+        }
+
+        Text(text = counter.toString(), modifier = m)
     }
+
 }
