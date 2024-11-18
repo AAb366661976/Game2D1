@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val screenW = resources.displayMetrics.widthPixels
                     val screenH = resources.displayMetrics.heightPixels
-                    val game = Game(GlobalScope)
+                    val game = Game(GlobalScope,screenW,screenH)
                     Start(m=Modifier.padding(innerPadding),game, screenW)
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
 
@@ -57,25 +57,21 @@ fun Start(m: Modifier,game:Game, screenW: Int){
     val counter by game.state.collectAsState()
     var counter2 by remember { mutableStateOf(0) }
 
-    var x by remember { mutableStateOf(0) }
-    x++
-    if(x>screenW){
-        x=0
-    }
+
 
     Image(
         painter = painterResource(id = R.drawable.forest),
         contentDescription = "背景圖",
         contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
         modifier = Modifier
-            .offset { IntOffset(-x,0) }
+            .offset { IntOffset(-game.background.x1,0) }
     )
     Image(
         painter = painterResource(id = R.drawable.forest),
         contentDescription = "背景圖2",
         contentScale = ContentScale.FillBounds,  //縮放符合螢幕寬度
         modifier = Modifier
-            .offset { IntOffset(-x+screenW, 0) }
+            .offset { IntOffset(-game.background.x2, 0) }
     )
 
     Row {
