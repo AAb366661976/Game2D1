@@ -43,6 +43,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun Start(m: Modifier,game:Game){
     val counter by game.state.collectAsState()
