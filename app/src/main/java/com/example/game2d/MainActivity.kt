@@ -1,5 +1,6 @@
 package com.example.game2d
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,6 +26,8 @@ class MainActivity : ComponentActivity() {
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+
                 }
             }
         }
