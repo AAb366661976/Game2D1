@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.height
 import androidx.compose.ui.unit.dp
-
+import androidx.compose.foundation.layout.size
 
 
 
@@ -89,6 +89,15 @@ fun Start(m: Modifier,game:Game, screenW: Int){
             .width(100.dp)
             .height(220.dp)
             .offset { IntOffset(0, 200) }
+    )
+
+    val virusImage = arrayListOf(R.drawable.virus1, R.drawable.virus2)
+    Image(
+        painter = painterResource(id = virusImage[0]),
+        contentDescription = "病毒",
+        modifier = Modifier
+            .size(80.dp)
+            .offset { IntOffset(1000, y = 200) }
     )
 
 
