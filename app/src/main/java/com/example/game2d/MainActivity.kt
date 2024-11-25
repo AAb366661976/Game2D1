@@ -28,6 +28,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.layout.offset
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.height
+import androidx.compose.ui.unit.dp
 
 
 
@@ -74,6 +77,20 @@ fun Start(m: Modifier,game:Game, screenW: Int){
         modifier = Modifier
             .offset { IntOffset(game.background.x2, 0) }
     )
+
+    val boyImage = arrayListOf(R.drawable.boy1, R.drawable.boy2,
+        R.drawable.boy3, R.drawable.boy4, R.drawable.boy5,
+        R.drawable.boy6, R.drawable.boy7, R.drawable.boy8)
+
+    Image(
+        painter = painterResource(id = boyImage[0]),
+        contentDescription = "小男孩",
+        modifier = Modifier
+            .width(100.dp)
+            .height(220.dp)
+            .offset { IntOffset(0, 200) }
+    )
+
 
     Row {
         Button(
