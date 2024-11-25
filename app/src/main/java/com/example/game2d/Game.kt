@@ -11,6 +11,8 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
     val background = Background(screenW)
     var isPlaying = true
     val boy=Boy(screenH,scale)
+    val virus = Virus(screenW, screenH, scale)
+
     fun Play(){
         scope.launch {
             //counter = 0
@@ -21,6 +23,7 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
 
                 if (counter%3==0){
                     boy.Walk()
+                    virus.Fly()
                 }
 
                 counter++
