@@ -126,7 +126,7 @@ fun Start(m: Modifier,game:Game, screenW: Int){
             .pointerInput(Unit) {  //觸控病毒往上，扣一秒鐘
                 detectTapGestures(
                     onTap = {
-                        game.virus.y -= 40
+                        game.virus2.y -= 40
                         game.counter -= 25
                     }
                 )
