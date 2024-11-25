@@ -24,7 +24,9 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
                 if (counter%3==0){
                     boy.Walk()
                     virus.Fly()
-
+                    if(boy.getRect().intersect(virus.getRect())) {
+                        isPlaying = false
+                    }
                 }
 
                 counter++
@@ -33,9 +35,7 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
             }
         }
 
-        if(boy.getRect().intersect(virus.getRect())) {
-            isPlaying = false
-        }
+
     }
 
 }
