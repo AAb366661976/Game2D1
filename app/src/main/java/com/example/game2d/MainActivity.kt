@@ -113,17 +113,25 @@ fun Start(m: Modifier,game:Game, screenW: Int){
             }
     )
 
+    if (msg == "遊戲暫停" && !game.isPlaying){
+        msg = "遊戲結束，按此按鍵重新開始遊戲"
+    }
+
 
     Row {
         Button(
             onClick = {
-                if (msg=="遊戲開始"){
+                if (msg=="遊戲開始" || msg =="遊戲繼續"){
                     msg = "遊戲暫停"
                     game.Play()
                 }
-                else{
-                    msg = "遊戲開始"
+                else if (msg=="遊戲暫停"){
+                    msg = "遊戲繼續"
                     game.isPlaying = false
+                }
+                else{  //重新開始遊戲
+                    msg = "遊戲暫停"
+                    game.Restart()
                 }
 
             },

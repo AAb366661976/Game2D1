@@ -38,6 +38,13 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
 
 
     }
+    fun Restart(){
+        virus.Reset()
+        counter = 0
+        isPlaying = true
+        Play()
+    }
+
 
 }
 
