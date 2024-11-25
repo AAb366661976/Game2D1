@@ -5,7 +5,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int){
+class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Float){
     var counter = 0
     val state = MutableStateFlow(0)
     val background = Background(screenW)

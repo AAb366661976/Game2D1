@@ -44,7 +44,9 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val screenW = resources.displayMetrics.widthPixels
                     val screenH = resources.displayMetrics.heightPixels
-                    val game = Game(GlobalScope,screenW,screenH)
+                    //dp轉像素的倍率 (1dp的像素)
+                    val scale = resources.displayMetrics.density
+                    val game = Game(GlobalScope,screenW,screenH,scale)
                     Start(m=Modifier.padding(innerPadding),game, screenW)
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
 
