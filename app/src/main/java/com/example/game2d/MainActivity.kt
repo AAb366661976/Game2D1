@@ -93,6 +93,15 @@ fun Start(m: Modifier,game:Game, screenW: Int){
             .width(100.dp)
             .height(220.dp)
             .offset { IntOffset(game.boy.x, game.boy.y) }
+            .pointerInput(Unit) {  //觸控病毒往上，扣一秒鐘
+                detectTapGestures(
+                    onTap = {
+                        game.virus.y -= 40
+                        game.counter -= 25
+                    }
+                )
+            }
+
     )
 
     val virusImage = arrayListOf(R.drawable.virus1, R.drawable.virus2)
@@ -102,14 +111,6 @@ fun Start(m: Modifier,game:Game, screenW: Int){
         modifier = Modifier
             .size(80.dp)
             .offset { IntOffset(game.virus.x, game.virus.y) }
-            .pointerInput(Unit) {  //觸控病毒往上，扣一秒鐘
-                detectTapGestures(
-                    onTap = {
-                        game.virus.y -= 40
-                        game.counter -= 25
-                    }
-                )
-            }
 
     )
 
