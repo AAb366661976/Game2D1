@@ -29,6 +29,7 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
                     }
                 }
 
+
                 counter++
                 state.emit(counter)
 
