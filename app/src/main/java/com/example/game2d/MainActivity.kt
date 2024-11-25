@@ -1,6 +1,7 @@
 package com.example.game2d
 
 import android.content.pm.ActivityInfo
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -48,7 +49,7 @@ class MainActivity : ComponentActivity() {
                     val screenH = resources.displayMetrics.heightPixels
                     //dp轉像素的倍率 (1dp的像素)
                     val scale = resources.displayMetrics.density
-                    val game = Game(GlobalScope,screenW,screenH,scale)
+                    val game = Game(GlobalScope,screenW,screenH,scale,this)
                     Start(m=Modifier.padding(innerPadding),game, screenW)
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
 
