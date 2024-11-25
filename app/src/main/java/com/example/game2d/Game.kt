@@ -10,7 +10,7 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
     val state = MutableStateFlow(0)
     val background = Background(screenW)
     var isPlaying = true
-
+    val boy=Boy(screenH,scale)
     fun Play(){
         scope.launch {
             //counter = 0
