@@ -35,6 +35,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.ui.platform.LocalContext
+import android.app.Activity
+import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.Alignment
 
 
 
@@ -155,5 +159,23 @@ Row {
     }
 
     }
+
+    val activity = (LocalContext.current as? Activity)
+    Box (
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.BottomEnd
+    ){
+        Button(
+            onClick = {
+                game.mper1.stop()
+                game.mper2.stop()
+                activity?.finish()
+            }
+        ) {
+            Text("結束App")
+        }
+    }
+
+
 
 }
