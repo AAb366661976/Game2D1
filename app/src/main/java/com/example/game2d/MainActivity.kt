@@ -95,11 +95,11 @@ fun Start(m: Modifier,game:Game, screenW: Int){
 
     val virusImage = arrayListOf(R.drawable.virus1, R.drawable.virus2)
     Image(
-        painter = painterResource(id = virusImage[0]),
+        painter = painterResource(id = virusImage[game.virus.pictNo]),
         contentDescription = "病毒",
         modifier = Modifier
             .size(80.dp)
-            .offset { IntOffset(1000, y = 200) }
+            .offset { IntOffset(game.virus.x, game.virus.y) }
     )
 
 
