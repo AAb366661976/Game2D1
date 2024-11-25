@@ -8,6 +8,7 @@ class Boy(screenH:Int, scale:Float) {
     var pictNo = 0  //切換圖片
 
     fun Walk() {
+        //x+=10
         pictNo++
         if (pictNo > 7) {
             pictNo = 0

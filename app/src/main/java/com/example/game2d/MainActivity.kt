@@ -90,7 +90,7 @@ fun Start(m: Modifier,game:Game, screenW: Int){
         modifier = Modifier
             .width(100.dp)
             .height(220.dp)
-            .offset { IntOffset(0, game.boy.y) }
+            .offset { IntOffset(game.boy.x, game.boy.y) }
     )
 
     val virusImage = arrayListOf(R.drawable.virus1, R.drawable.virus2)
