@@ -85,7 +85,7 @@ fun Start(m: Modifier,game:Game, screenW: Int){
         R.drawable.boy6, R.drawable.boy7, R.drawable.boy8)
 
     Image(
-        painter = painterResource(id = boyImage[0]),
+        painter = painterResource(id = boyImage[ game.boy.pictNo]),
         contentDescription = "小男孩",
         modifier = Modifier
             .width(100.dp)

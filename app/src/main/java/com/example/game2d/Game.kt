@@ -16,8 +16,13 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
             //counter = 0
             isPlaying = true
             while (isPlaying) {
-                delay(4)
+                delay(40)
                 background.Roll()
+
+                if (counter%3==0){
+                    boy.Walk()
+                }
+
                 counter++
                 state.emit(counter)
 
