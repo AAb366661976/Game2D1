@@ -15,12 +15,14 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
     var isPlaying = true
     val boy=Boy(screenH,scale)
     val virus = Virus(screenW, screenH, scale)
+    val virus2 = Virus(screenW, screenH, scale)
     var mper1 = MediaPlayer.create(context, R.raw.lastletter)
     var mper2 = MediaPlayer.create(context, R.raw.gameover)
     fun Play(){
         scope.launch {
             //counter = 0
             isPlaying = true
+            virus2.y=0
             while (isPlaying) {
                 mper1.start()
                 delay(40)
@@ -29,6 +31,7 @@ class Game (val scope:CoroutineScope,val screenW:Int, val screenH: Int,scale: Fl
                 if (counter%3==0){
                     boy.Walk()
                     virus.Fly()
+                    virus2.Fly()
                     if(boy.getRect().intersect(virus.getRect())) {
                         isPlaying = false
                         mper1.pause()
